@@ -9,7 +9,7 @@ import com.cnstn.entities.Employee;
 
 
 
-public interface EmlpoiyerRepository extends JpaRepository <Employee,Long>   {
+public interface EmployeeRepository extends JpaRepository <Employee,Long>   {
 	
 	
 	

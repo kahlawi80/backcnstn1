@@ -19,7 +19,7 @@ public class Service {
 	private String nom;
 	private String description;
 	
-	@ManyToOne()
+	@ManyToOne
 	Direction direction;
 	
 	@OneToMany(fetch=FetchType.LAZY)

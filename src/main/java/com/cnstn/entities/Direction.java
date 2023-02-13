@@ -17,6 +17,8 @@ public class Direction {
 	private String nom;
 	private String description;
 	
+	
+	
 	@OneToMany
 	private List<Service> sevices = new ArrayList<Service>();
 
