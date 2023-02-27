@@ -6,6 +6,8 @@ import java.util.List;
 
 import javax.persistence.Entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -21,6 +23,11 @@ public class Demande_mat_info {
 	private Date materiel_demmander;
 	
 	@ManyToOne
+
+	@JoinColumn(name = "employee_id")
+
+	@JsonBackReference("employee-demande_mat_info")
+
 	private Employee employee;
 	
 	

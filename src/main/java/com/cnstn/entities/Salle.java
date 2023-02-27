@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -19,8 +22,9 @@ public class Salle {
 	private int nombre_place;
 	
 	
-	
-	@OneToMany(fetch=FetchType.LAZY)
-	private List<Reservation> reservation= new ArrayList<Reservation>();
+	@OneToMany(mappedBy = "salle", fetch = FetchType.LAZY)
 
+	@JsonIgnoreProperties("salle")
+
+	private List<Reservation> reservation= new ArrayList<Reservation>();
 }

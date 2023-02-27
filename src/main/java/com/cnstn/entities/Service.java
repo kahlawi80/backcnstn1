@@ -5,6 +5,10 @@ import java.util.List;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -19,10 +23,18 @@ public class Service {
 	private String nom;
 	private String description;
 	
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY)
+
+	@JoinColumn(name = "direction_id")
+
+	@JsonBackReference("service-direction")
+
 	Direction direction;
-	
-	@OneToMany(fetch=FetchType.LAZY)
+
+	@OneToMany(mappedBy = "service", fetch = FetchType.LAZY)
+
+	@JsonIgnoreProperties("service")
+
 	private List<Employee> employees= new ArrayList<Employee>();
 	
 }

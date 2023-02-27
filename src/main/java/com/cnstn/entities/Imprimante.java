@@ -6,7 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 @DiscriminatorValue("imp")
 @Entity 
-@Data
+@Data  
 @AllArgsConstructor
 @NoArgsConstructor
 public class Imprimante extends Materiels {

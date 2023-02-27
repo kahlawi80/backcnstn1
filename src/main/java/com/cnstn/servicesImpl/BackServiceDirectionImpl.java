@@ -1,7 +1,7 @@
 package com.cnstn.servicesImpl;
 
 import java.util.List;
-
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,16 +14,10 @@ import com.cnstn.service.BackServiceDirection;
 
 @Service
 public class BackServiceDirectionImpl implements BackServiceDirection{
-	
 
-	
 	@Autowired
 	DirectionRepository directionRepository;
-
-
-
-
-
+	
 	@Override
 	public List<Direction> AfficherListDir() {
 		List<Direction> Listdir=directionRepository.findAll();
@@ -35,6 +29,34 @@ public class BackServiceDirectionImpl implements BackServiceDirection{
 		
 		return directionRepository.save(direction);
 	}
+
+	@Override
+	public Direction loadDirections(Long id) {
+		// TODO Auto-generated method stub
+		Optional<Direction> optionaldirection = directionRepository.findById(id);
+		return  optionaldirection.get() ;
+	}
+
+	@Override
+	public void deleteDirection(Long id) {
+		// TODO Auto-generated method stub
+		 directionRepository.deleteById(id);
+		
+	}
+
+	@Override
+	public Direction updateDirection(Direction direction) {
+		// TODO Auto-generated method stub
+		
+		       Direction existingDirection = directionRepository.findById(direction.getId()).get();
+		       
+		        existingDirection.setDescription(direction.getDescription());
+		        
+		        existingDirection.setNom(direction.getNom());
+	
+		       Direction updatedDirection = directionRepository.save(existingDirection);
+		        return updatedDirection;
+		    }
 
 
 	

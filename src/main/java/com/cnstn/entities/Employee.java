@@ -4,6 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -15,7 +19,7 @@ import lombok.NoArgsConstructor;
 public class Employee {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
+	private Long id;
 	private String nom;
 	private String prenom;
 	private int cin;
@@ -25,15 +29,28 @@ public class Employee {
 	private String poste;
 
 	@ManyToOne
+
+	@JoinColumn(name = "service_id")
+
+	@JsonBackReference("service-employee")
+
 	private Service service;
 
-	@OneToMany
+	@OneToMany(mappedBy = "employee", fetch = FetchType.LAZY)
+
+	@JsonIgnoreProperties("employee")
+
 	private List<Reservation> reservations = new ArrayList<Reservation>();
 
-	@OneToMany
+	@OneToMany(mappedBy = "employee", fetch = FetchType.LAZY)
+
+	@JsonIgnoreProperties("employee")
+
 	private List<Materiels> materiels = new ArrayList<Materiels>();
 
-	@OneToMany(mappedBy = "employee")
-	private List<Demande_mat_info> demandes = new ArrayList<Demande_mat_info>();
+	@OneToMany(mappedBy = "employee", fetch = FetchType.LAZY)
 
+	@JsonIgnoreProperties("employee")
+
+	private List<Demande_mat_info> demandes = new ArrayList<Demande_mat_info>();
 }

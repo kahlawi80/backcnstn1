@@ -2,15 +2,19 @@ package com.cnstn.service;
 
 import java.util.List;
 
-import com.cnstn.entities.Demande_mat_info;
-import com.cnstn.entities.Materiels;
+
 import com.cnstn.entities.Service;
 
-
 public interface BackServiceService {
-	List<Service> AfficherListService();
-	Service addService(Service service );
-	
 
+	List<Service> AfficherListService();
+
+	Service addService(Service service);
+
+	Service loadService(Long id);
+
+	void deleteservice(Long id);
+
+	Service updateservice(Service service);
 
 }

@@ -3,6 +3,9 @@ package com.cnstn.entities;
 import java.sql.Date;
 
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -21,8 +24,12 @@ public abstract class Materiels {
 	private String nom;
 	private long codeinv;
 	 
-	@ManyToOne(fetch=FetchType.LAZY)
+	@ManyToOne
+
+	@JoinColumn(name = "employee_id")
+
+	@JsonBackReference("employee-matriels")
+
 	Employee employee;
-	
 
 }

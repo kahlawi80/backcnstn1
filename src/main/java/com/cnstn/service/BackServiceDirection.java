@@ -9,5 +9,9 @@ public interface BackServiceDirection {
 
 	List<Direction> AfficherListDir();
 	Direction addDirections(Direction direction);
+	Direction loadDirections(Long id);
+	void deleteDirection(Long id);
+	Direction updateDirection(Direction direction);
+	
 
 }
