@@ -60,9 +60,9 @@ public class SalleContoller {
 		
 		
 		 @DeleteMapping("{id}")
-		    public   ResponseEntity<String> deleteSalle(@PathVariable("id") Long id){
+		    public   ResponseEntity<Object> deleteSalle(@PathVariable("id") Long id){
 		        backServiceSalle.deleteSalle(id);
-		        return new ResponseEntity<>("User successfully deleted!", HttpStatus.OK);
+		        return  ResponseEntity.noContent().build();
 		        
 		    }
 

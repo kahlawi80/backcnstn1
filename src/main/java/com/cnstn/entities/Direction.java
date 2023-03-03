@@ -21,9 +21,9 @@ public class Direction {
 	
 	
 	
-	@OneToMany(mappedBy ="direction", fetch = FetchType.LAZY)
+	@OneToMany(mappedBy ="direction", fetch = FetchType.LAZY , cascade = CascadeType.ALL, orphanRemoval = true )
 
-	@JsonIgnoreProperties("direction")
+	//@JsonIgnoreProperties("direction")
 
 	private List<Service> sevices = new ArrayList<Service>();
 	

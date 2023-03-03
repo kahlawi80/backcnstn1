@@ -31,9 +31,9 @@ public class Service {
 
 	Direction direction;
 
-	@OneToMany(mappedBy = "service", fetch = FetchType.LAZY)
+	@OneToMany(mappedBy = "service", fetch = FetchType.LAZY , cascade = CascadeType.ALL, orphanRemoval = true)
 
-	@JsonIgnoreProperties("service")
+	//@JsonIgnoreProperties("service")
 
 	private List<Employee> employees= new ArrayList<Employee>();
 	

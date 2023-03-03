@@ -20,7 +20,7 @@ public class Demande_mat_info {
 	@Id @GeneratedValue(strategy= GenerationType.IDENTITY)
 	private long id;
 	private Date date_demmande;
-	private Date materiel_demmander;
+	private String materiel_demmander;
 	
 	@ManyToOne
 

@@ -59,7 +59,7 @@ public class ServiceController {
 	 @DeleteMapping("{id}")
 	    public   ResponseEntity<String> deleteService(@PathVariable("id") Long id){
 	        backServiceService.deleteservice(id);
-	        return new ResponseEntity<>("User successfully deleted!", HttpStatus.OK);
+	        return  ResponseEntity.noContent().build();
 	        
 	    }
 
